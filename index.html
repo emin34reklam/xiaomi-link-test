@@ -1,6 +1,217 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Xiaomi Link Test</title><style>body{font-family:Arial;background:#f6f2e9;padding:20px;max-width:520px;margin:auto}h1{text-align:center}.c{background:#fff;padding:16px;margin:14px 0;border-radius:16px}a,button{display:block;width:100%;box-sizing:border-box;padding:14px;margin:8px 0;border:0;border-radius:10px;background:#111;color:#fff;text-align:center;text-decoration:none;font-weight:bold;font-size:16px}.b{background:#a88d43}</style></head><body><h1>اختبار Xiaomi / HyperOS</h1><p>جرّب A ثم B ثم C لكل تطبيق، وشوف أي طريقة ما بتظهر Browser Dual.</p>
-<div class="c"><h2>WhatsApp</h2><a href="https://wa.me/905343654232">A — HTTPS</a><a class="b" href="whatsapp://send?phone=905343654232">B — App Link</a><button onclick="location.href='intent://send?phone=905343654232#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=https%3A%2F%2Fwa.me%2F905343654232;end'">C — Intent</button></div>
-<div class="c"><h2>Instagram</h2><a href="https://www.instagram.com/emin34reklam/">A — HTTPS</a><a class="b" href="instagram://user?username=emin34reklam">B — App Link</a><button onclick="location.href='intent://user?username=emin34reklam#Intent;scheme=instagram;package=com.instagram.android;S.browser_fallback_url=https%3A%2F%2Fwww.instagram.com%2Femin34reklam%2F;end'">C — Intent</button></div>
-<div class="c"><h2>TikTok</h2><a href="https://www.tiktok.com/@emin34reklam">A — HTTPS</a><a class="b" href="snssdk1233://user/profile/emin34reklam">B — App Link</a><button onclick="location.href='intent://user/profile/emin34reklam#Intent;scheme=snssdk1233;package=com.zhiliaoapp.musically;S.browser_fallback_url=https%3A%2F%2Fwww.tiktok.com%2F%40emin34reklam;end'">C — Intent</button></div>
-<div class="c"><h2>Facebook</h2><a href="https://www.facebook.com/emin34reklam">A — HTTPS</a><a class="b" href="fb://facewebmodal/f?href=https://www.facebook.com/emin34reklam">B — App Link</a><button onclick="location.href='intent://facewebmodal/f?href=https%3A%2F%2Fwww.facebook.com%2Femin34reklam#Intent;scheme=fb;package=com.facebook.katana;S.browser_fallback_url=https%3A%2F%2Fwww.facebook.com%2Femin34reklam;end'">C — Intent</button></div>
-</body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>اختبار فتح Instagram - Xiaomi</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 25px 18px;
+      background: #f6f2e9;
+      font-family: Arial, sans-serif;
+      color: #171717;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      text-align: center;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid #e5dcc8;
+      box-shadow: 0 5px 20px rgba(0,0,0,.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .test-button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      color: white;
+      background: #111;
+    }
+
+    .b {
+      background: #a88d43;
+    }
+
+    .c {
+      background: #555;
+    }
+
+    .d {
+      background: #c13584;
+    }
+
+    .e {
+      background: #833ab4;
+    }
+
+    .info {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #fff8e6;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>اختبار Instagram</h1>
+
+  <div class="description">
+    Xiaomi / HyperOS<br>
+    جرّب الأزرار بالترتيب A → B → C → D → E
+  </div>
+
+  <div class="card">
+
+    <h2>Instagram</h2>
+
+    <!-- A -->
+    <a
+      class="test-button"
+      href="https://www.instagram.com/emin34reklam/">
+      A — HTTPS عادي
+    </a>
+
+
+    <!-- B -->
+    <a
+      class="test-button b"
+      href="instagram://user?username=emin34reklam">
+      B — Instagram App Link
+    </a>
+
+
+    <!-- C -->
+    <button
+      class="test-button c"
+      onclick="openIntent()">
+      C — Android Intent
+    </button>
+
+
+    <!-- D -->
+    <button
+      class="test-button d"
+      onclick="openReplace()">
+      D — location.replace
+    </button>
+
+
+    <!-- E -->
+    <button
+      class="test-button e"
+      onclick="openAssign()">
+      E — location.assign
+    </button>
+
+  </div>
+
+
+  <div class="info">
+
+    <strong>المطلوب:</strong><br><br>
+
+    جرّب كل زر لحاله.<br>
+
+    بعد الضغط شوف إذا فتح:<br><br>
+
+    • Instagram النظامي ✅<br>
+    • Instagram Dual ❌<br>
+    • المتصفح Dual ❌<br>
+    • أو ما صار شي ❌
+
+  </div>
+
+</div>
+
+
+<script>
+
+const instagramURL =
+"https://www.instagram.com/emin34reklam/";
+
+
+/* C — Android Intent */
+
+function openIntent() {
+
+  window.location.href =
+  "intent://user?username=emin34reklam" +
+  "#Intent;" +
+  "scheme=instagram;" +
+  "package=com.instagram.android;" +
+  "S.browser_fallback_url=" +
+  encodeURIComponent(instagramURL) +
+  ";end";
+
+}
+
+
+/* D — location.replace */
+
+function openReplace() {
+
+  window.location.replace(
+    instagramURL
+  );
+
+}
+
+
+/* E — location.assign */
+
+function openAssign() {
+
+  window.location.assign(
+    instagramURL
+  );
+
+}
+
+</script>
+
+</body>
+</html>
